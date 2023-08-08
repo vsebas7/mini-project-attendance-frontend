@@ -15,6 +15,7 @@ import EmployeePage from "./pages/employee"
 import RegisterEmployeePage from "./pages/employee/add-new-employee"
 import ActivateAccountPage from "./pages/employee/activate-employee-account"
 import { ProtectedRouteAdmin, ProtectedRouteEmployee } from "./protected.routes"
+import EmployeeDetailPage from "./pages/employee/employee-detail"
 
 function App() {
 	const dispatch = useDispatch()
@@ -79,6 +80,22 @@ function App() {
 						element={
 							<ProtectedRouteAdmin>
 								<RegisterEmployeePage />
+							</ProtectedRouteAdmin>
+						} 
+					/>										
+					<Route 
+						path="/employee/detail/"
+						element={
+							<ProtectedRouteAdmin>
+								<EmployeeDetailPage />
+							</ProtectedRouteAdmin>
+						} 
+					/>										
+					<Route 
+						path="/employee/detail/:employeeId"
+						element={
+							<ProtectedRouteAdmin>
+								<EmployeeDetailPage />
 							</ProtectedRouteAdmin>
 						} 
 					/>

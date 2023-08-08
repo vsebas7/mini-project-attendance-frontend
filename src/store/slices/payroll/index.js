@@ -29,7 +29,10 @@ const payrollSlice = createSlice({
             })
         },
         [payroll.rejected] : (state, action) => {
-            state.isGetPayrollLoading = true
+            state = Object.assign(state, {
+                list : 0,
+                isGetPayrollLoading : false,
+            })
         },
         [deduction.pending] : (state, action) => {
             state.isGetDeductionLoading = true

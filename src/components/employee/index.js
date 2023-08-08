@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 function EmployeeListCard ({
+    id ="",
     username ="",
     email="",
     phone="",
@@ -7,11 +10,14 @@ function EmployeeListCard ({
     shiftEnd="",
     salaryMonth="",
 }) {
+    const navigate = useNavigate()
     return (
         <tbody>
             <tr class="bg-white text-left border-b bg-blue dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4  font-medium text-gray-900  dark:text-white">
-                    {username}
+                    <button onClick={()=>{navigate(`/employee/detail/${id}`,"replace")}} >
+                        {username}
+                    </button>
                 </th>
                 <th scope="row" class="px-6 py-4  font-medium text-gray-900  dark:text-white">
                     {email}
@@ -42,6 +48,7 @@ export default function RenderEmployeeListCard ({
     return employee.map((employee, index) => {
         return (
             <EmployeeListCard key={employee.id}
+                id={employee.id}
                 username={employee.username}
                 email={employee.email}
                 phone={employee.phone}

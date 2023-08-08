@@ -49,7 +49,10 @@ const employeeSlice = createSlice({
             })
         },
         [employeeList.rejected] : (state, action) => {
-            state.isListLoading = false
+            state = Object.assign(state, {
+                list : [],
+                isListLoading : false,
+            })
         },
         [shiftList.pending] : (state, action) => {
             state.isListLoading = true

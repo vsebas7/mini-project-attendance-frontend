@@ -43,22 +43,24 @@ export const attendanceList = createAsyncThunk(
      
     async (payload, { rejectWithValue }) => {
         try {
-            const { date, page, startDate, endDate } = payload
+            const { date, page, startDate, endDate,employeeId } = payload
 
             let response ={}
 
-            if(window.location.pathname=="/payroll"){
+            if(window.location.pathname=="/attendance"){
 
-                const PARAMETER = `?startDate=${startDate}&endDate=${endDate}&page=${page}`
-                response = await api.get("attendance/history" + encodeURI(PARAMETER) )
-
-            }else if(window.location.pathname=="/attendance"){
-                
                 response = await api.get(`${date ? "attendance/history" + encodeURI(`?date=${date}`) : "attendance/history" + encodeURI(`?page=${page}`) }` )
                 
+            }else {
+                
+                const PARAMETER = !employeeId ? `?startDate=${startDate}&endDate=${endDate}&page=${page}` :`?startDate=${startDate}&endDate=${endDate}&page=${page}&employeeId=${employeeId}`
+                
+                response = await api.get("attendance/history" + encodeURI(PARAMETER) )
             } 
 
-            Toast.success(response.data.message)
+            if(window.location.pathname !=="/attendance"){
+                Toast.success(response.data.message)
+            }
 
             return response.data.attendances
         } catch (error) {

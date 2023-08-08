@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import Pagination from "../../components/pagination"
 import { employeeList } from "../../store/slices/employee/slices"
-import { payroll } from "../../store/slices/payroll/slices"
 import moment from "moment"
 import RenderEmployeeListCard from "../../components/employee"
 
@@ -26,15 +25,15 @@ function EmployeePage () {
         )
     }
 
+    const onButtonSearch = (event)=>{
+        dispatch(
+            employeeList({screening : event.target.value})
+        )
+    }
+
     useEffect(()=>{
         dispatch(
-            employeeList()
-        )
-        dispatch(
-            payroll({
-                startDate : moment().startOf('month').format("YYYY-MM-DD"), 
-                endDate : moment().endOf('month').format("YYYY-MM-DD"), 
-            })
+            employeeList({screening:""})
         )
     },[])
 
@@ -43,6 +42,13 @@ function EmployeePage () {
         <div>
             <div class="my-10 mr-20 w-[95%] py-5 shadow-md sm:rounded-lg">
                 <a className="text-[20pt] pl-5 "> | Employee List</a>
+                <div className="mt-5">
+                    <input 
+                        class="block w-[200px] p-[6px] ml-5 pl-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                        onChange={onButtonSearch}
+                        placeholder="Search Username or Email"
+                    />
+                </div>
                 <table class="w-full mt-5 text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>

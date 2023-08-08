@@ -99,12 +99,12 @@ function PayrollPage () {
                 
                 <div className="flex gap-10">
                     <div>
-                        <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Salary : {new Intl.NumberFormat().format(payrollMonth?.amount)}</h5>
+                        <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Salary : {payrollMonth?.amount ? new Intl.NumberFormat().format(payrollMonth?.amount) : 0}</h5>
                         <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Deduction : {new Intl.NumberFormat().format(deductionList?.amount ? deductionList?.amount : 0)}</h5>
                     </div>
 
                     <div>
-                        <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Attendance Day(s) : {new Intl.NumberFormat().format(payrollMonth?.attendances_day)}</h5>
+                        <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Attendance Day(s) : {payrollMonth?.attendances_day ? new Intl.NumberFormat().format(payrollMonth?.attendances_day) : 0}</h5>
                         <h5 class="my-5 pl-9 text-xl font-medium text-gray-900 dark:text-white">Total Deduction Day(s) : {new Intl.NumberFormat().format(deductionList?.deduction_day ? deductionList?.deduction_day : 0)}</h5>
                     </div>
                 </div>

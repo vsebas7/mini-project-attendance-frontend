@@ -51,11 +51,11 @@ const attendanceSlice = createSlice({
             state.isGetHistoryLoading = false
         },
         [attendanceList.fulfilled] : (state, action) => {
-            if(action.payload.history.length==1 && window.location.pathname=="/attendance"){
+            if(action.payload.history.length===1 && window.location.pathname==="/attendance"){
                 state.list = action.payload.history
             }
 
-            if(action.payload.history.length>1 || window.location.pathname=="/payroll"){
+            if(action.payload.history.length>1 || window.location.pathname==="/payroll"){
                 state.history = action.payload.history
             }
 

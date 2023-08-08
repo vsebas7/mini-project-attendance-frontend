@@ -27,8 +27,10 @@ export const employeeList = createAsyncThunk(
      
     async (payload, { rejectWithValue }) => {
         try {
+            const {screening} = payload
+            const PARAMETER = `?screening=${screening}`
 
-            const {data} = await api.get("employee/")
+            const {data} =await api.get("employee" + encodeURI(PARAMETER))
 
             Toast.success(data.message)
 
