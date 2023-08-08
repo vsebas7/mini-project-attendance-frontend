@@ -20,6 +20,6 @@ export const ResetPasswordValidationSchema = Yup.object().shape({
         .minNumbers(1,"Password must contain at least 1 number"),
         
   confirm: Yup.string()
-        .required("Password is required")
+        .required("Confirm Password is required")
         .oneOf([Yup.ref('password'), null], 'Must match "password" field value'),
 });

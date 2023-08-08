@@ -12,8 +12,8 @@ const INITIAL_STATE = {
     isGetDeductionLoading : false,
 }
 
-const attendanceSlice = createSlice({
-    name : "attendance",
+const payrollSlice = createSlice({
+    name : "payroll",
     initialState : INITIAL_STATE,
     reducers : {
 
@@ -49,4 +49,4 @@ const attendanceSlice = createSlice({
     }
 })
 
-export default attendanceSlice.reducer
+export default payrollSlice.reducer

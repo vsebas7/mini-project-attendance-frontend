@@ -2,7 +2,6 @@ import moment from "moment"
 import { useDispatch, useSelector } from "react-redux"
 import { attendanceList } from "../../store/slices/attendance/slices"
 import { useEffect, useState } from "react"
-import RenderProfileDetailCard from "../../components/profile"
 import RenderAttendanceListCard from "../../components/attendance"
 import Pagination from "../../components/pagination"
 import { deduction, payroll } from "../../store/slices/payroll/slices"
@@ -85,12 +84,6 @@ function PayrollPage () {
     
     return (
         <div>
-           
-            {/* <div class="border w-[80%] h-[200px] pt-5 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a className="text-[20pt] pl-5"> | Employee Details</a>
-                <RenderProfileDetailCard profile={profile}/>
-            </div> */}
-
            <div class="my-10 mr-20 w-[80%] py-5 shadow-md sm:rounded-lg">
                 <a className="text-[20pt] pl-5  "> | Payroll</a>
 

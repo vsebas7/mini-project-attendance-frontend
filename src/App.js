@@ -11,9 +11,12 @@ import Sidebar from "./components/menu/sidebar"
 import AttendancePage from "./pages/attendance"
 import ProfilePage from "./pages/profile"
 import PayrollPage from "./pages/payroll"
+import EmployeePage from "./pages/employee"
+import RegisterEmployeePage from "./pages/employee/add-new-employee"
+import ActivateAccountPage from "./pages/employee/activate-employee-account"
+import { ProtectedRouteAdmin, ProtectedRouteEmployee } from "./protected.routes"
 
 function App() {
-	document.title = 'Toko Roti Sebas'
 	const dispatch = useDispatch()
 	const { isKeepLoginLoading } = useSelector(state => {
 		return {
@@ -39,14 +42,53 @@ function App() {
 			<Sidebar />
 			<div className="pl-[20em] pt-[6em] flex flex-col">
 				<Routes>
+					<Route 
+						path="/attendance" 
+						element={
+							<ProtectedRouteEmployee>
+								<AttendancePage />
+							</ProtectedRouteEmployee>
+						} 
+					/>
+					<Route 
+						path="/profile" 
+						element={
+							<ProtectedRouteEmployee>
+								<ProfilePage />
+							</ProtectedRouteEmployee>
+						} 
+					/>
+					<Route 
+						path="/payroll" 
+						element={
+							<ProtectedRouteEmployee>
+								<PayrollPage />
+							</ProtectedRouteEmployee>
+						} 
+					/>
+					<Route 
+						path="/employee" 
+						element={
+							<ProtectedRouteAdmin>
+								<EmployeePage />
+							</ProtectedRouteAdmin>
+						} 
+					/>					
+					<Route 
+						path="/employee/register" 
+						element={
+							<ProtectedRouteAdmin>
+								<RegisterEmployeePage />
+							</ProtectedRouteAdmin>
+						} 
+					/>
 					<Route path="/" element={<LoginPage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/forgot-password" element={<ForgotPasswordPage />} />
 					<Route path="/reset-password/:token" element={<ResetPasswordPage />} />
 					<Route path="/reset-password" element={<ResetPasswordPage />} />
-					<Route path="/attendance" element={<AttendancePage />} />
-					<Route path="/profile" element={<ProfilePage />} />
-					<Route path="/payroll" element={<PayrollPage />} />
+					<Route path="/employee/activate-account/:token" element={<ActivateAccountPage />} />
+					<Route path="/employee/activate-account" element={<ActivateAccountPage />} />
 				</Routes>
 			</div>
 			

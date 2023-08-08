@@ -24,7 +24,7 @@ function ProfileDetailCard ({
                     </div>
                     <div className="flex flex-col">
                         Phone
-                    <span class="text-sm mt-1 text-gray-500 dark:text-gray-400">0{phone}</span>
+                    <span class="text-sm mt-1 text-gray-500 dark:text-gray-400">(+62)-{phone}</span>
                     </div>
                 </div>
 

@@ -12,9 +12,10 @@ function LoginPage () {
   
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { loading } = useSelector(state => {
+  const { loading, role } = useSelector(state => {
     return {
       loading : state.auth.isLoginLoading,
+      role : state.auth.role,
     }
   })
 
@@ -33,7 +34,11 @@ function LoginPage () {
 
   const token = localStorage.getItem("token")
 
-  if (token) return <Navigate to="/product" replace/>
+  if(token && role === 2){
+    return <Navigate to="/attendance" replace/>
+  }
+  if(token && role === 1)
+  {return <Navigate to="/employee" replace/>}
 
   return (
       <Formik
@@ -99,7 +104,7 @@ function LoginPage () {
                   </button>
                 </div>
               </Form>
-              <button className="link link-hover pl-5" onClick={() =>{navigate("/forgot-password")}}>Forgot Password</button>
+              <button className="link link-hover pl-5" onClick={() =>{navigate("/forgot-password")}}>Forgot Password?</button>
               <br/>
             </div>
           </div>

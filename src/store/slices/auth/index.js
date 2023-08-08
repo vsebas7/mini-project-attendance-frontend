@@ -13,8 +13,6 @@ const INITIAL_STATE = {
     email : "",
     role: "",
     shift: "",
-    detail: [],
-    isLogin : false,
     isLoginLoading : false,
     isLogoutLoading : false,
     isKeepLoginLoading : false,
@@ -39,15 +37,11 @@ const authSlice = createSlice({
                 email : action.payload?.user?.email,
                 role : action.payload?.user?.roleId,
                 shift : action.payload?.user?.shiftHourId,
-                isLogin : true,
                 isLoginLoading : false,
             })
         },
         [login.rejected] : (state, action) => {
-            state = Object.assign(state, {
-                isLoginLoading : false,
-                isLogin : false,
-            })
+            state.isLoginLoading = false
         },
         [logout.pending] : (state, action) => {
             state.isLogoutLoading = true
@@ -68,7 +62,6 @@ const authSlice = createSlice({
                 email : action.payload?.user?.email,
                 role : action.payload?.user?.roleId,
                 shift : action.payload?.user?.shiftHourId,
-                detail : action.payload?.user,
                 isKeepLoginLoading : false,
             })
         },

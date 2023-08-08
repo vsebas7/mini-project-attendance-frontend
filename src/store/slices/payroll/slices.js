@@ -9,9 +9,9 @@ export const payroll = createAsyncThunk(
         try {
             const { startDate, endDate, employeeId } = payload
 
-            const PARAMETER = `?startDate=${startDate}&endDate=${endDate}&employeeId=${employeeId}`
+            const PARAMETER = `startDate=${startDate}&endDate=${endDate}${employeeId ? `&employeeId=${employeeId}` :"" }`
 
-            const {data} = await api.get("/payroll" + encodeURI(PARAMETER))
+            const {data} = await api.get("/payroll?" + encodeURI(PARAMETER))
 
             Toast.success(data.message)
 

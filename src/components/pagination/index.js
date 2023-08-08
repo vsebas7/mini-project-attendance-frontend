@@ -5,7 +5,6 @@ export default function Pagination ({
 }) {
     return (
         <div class="flex flex-row">
-            {/* <!-- Previous Button --> */}
             <button 
                 disabled={disabledPrev} onClick={() => onChangePagination("prev")} 
                 class="flex items-center justify-center px-3 h-8 mr-3 text-sm font-medium text-white bg-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -14,7 +13,6 @@ export default function Pagination ({
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
                 </svg>
             </button>
-            {/* <!-- Next Button --> */}
             <button 
                 disabled={disabledNext} onClick={() => onChangePagination("next")}
                 class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-500 border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
