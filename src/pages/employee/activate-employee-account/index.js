@@ -66,7 +66,7 @@ function ActivateAccountPage () {
                             <div className="form card w-4/12 bg-white rounded shadow-xl py-4  z-50  ">
                                 <Form id="form_activate">
                                     <h1>| Activate Your Account</h1>
-                                    <a onClick={()=>{navigate("/login","replace")}}>Already Activate Your Account? login here</a>
+                                    <button onClick={()=>{navigate("/login","replace")}}>Already Activate Your Account? login here</button>
                                     <div className="form-row pt-5">
                                         <label >Username</label>
                                         <Field

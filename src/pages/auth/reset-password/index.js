@@ -23,13 +23,13 @@ function ResetPasswordPage () {
     const eye_slash =<FontAwesomeIcon icon={faEyeSlash} />;
 
     const [passwordShown, setPasswordShown] = useState({value : false, field_name : ""});
+    const [confirmPassShown, setConfirmPassShown] = useState({value : false, field_name : ""});
 
     const onButtonResetPassword = () => {
         dispatch(resetPassword({
             password : passwordRef.current?.value,
             confirm : confirmpasswordRef.current?.value
         }))
-        navigate("/login","replace")
     }
 
     return (
@@ -44,7 +44,8 @@ function ResetPasswordPage () {
                 <div className="ml-[-150px] container flex flex-col items-center justify-center z-50">
                 <div className="form card w-4/12 bg-white rounded shadow-xl py-4 z-50">
                         <Form>
-                        <h1>Reset Password</h1>
+                        <h1>| Reset Password</h1>
+                        <button onClick={()=>{navigate("/login","replace")}}>Already Reset Password? login here</button>
                         <div className="form-row pt-5">
                             <label htmlFor="password">New Password</label>
                             <div className="form-row-pass">
@@ -61,9 +62,6 @@ function ResetPasswordPage () {
                                 onClick={()=>{
                                     setPasswordShown({value : !passwordShown.value, field_name : "password" })
                                 }}
-                                onMouseLeave={()=>{
-                                    setPasswordShown({value : !passwordShown.value, field_name : "" })
-                                }}
                             >
                                 {passwordShown.value && passwordShown.field_name === "password" ? eye_slash : eye}
                             </i>
@@ -78,7 +76,7 @@ function ResetPasswordPage () {
                             <label htmlFor="password">Confirm Password</label>
                             <div className="form-row-pass">
                             <Field
-                                type={passwordShown.value && passwordShown.field_name === "confirm" ? "text" : "password"}
+                                type={confirmPassShown.value && confirmPassShown.field_name === "password" ? "text" : "password"}
                                 name="confirm"
                                 id="confirm"
                                 innerRef={confirmpasswordRef}
@@ -87,14 +85,9 @@ function ResetPasswordPage () {
                                 }
                             />
                             <i className="eye-password" 
-                                onClick={()=>{
-                                    setPasswordShown({value : !passwordShown.value, field_name : "confirm" })
-                                }}
-                                onMouseLeave={()=>{
-                                    setPasswordShown({value : !passwordShown.value, field_name : "" })
-                                }}
+                                onClick={()=>{setConfirmPassShown({value : !confirmPassShown.value, field_name : "password"})}}
                             >
-                                {passwordShown.value && passwordShown.field_name === "confirm" ? eye_slash : eye}
+                                {confirmPassShown.value && confirmPassShown.field_name === "password" ? eye_slash : eye}
                             </i>
                             </div>
                             <ErrorMessage

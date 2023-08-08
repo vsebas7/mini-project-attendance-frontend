@@ -14,7 +14,7 @@ export const EmailValidationSchema = Yup.object({
 export const ResetPasswordValidationSchema = Yup.object().shape({
   password : Yup.string()
         .required("Password is required")
-        .min(6, "Password must contain 6 or more characters with at least one of each: uppercase, special character and number")
+        .min(8, "Password must contain 8 or more characters with at least one of each: uppercase, special character and number")
         .minUppercase(1, "Password must contain at least 1 upper case letter")
         .minSymbols(1, "Password must contain at least 1 special character")
         .minNumbers(1,"Password must contain at least 1 number"),

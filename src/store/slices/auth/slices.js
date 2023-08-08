@@ -83,6 +83,8 @@ export const resetPassword = createAsyncThunk (
 
             Toast.success(data.message)
 
+            localStorage.removeItem("token")
+
         } catch (error) {
             Toast.error(error.response.data.message)
             return rejectWithValue(error.response.data.message)
