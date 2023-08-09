@@ -88,7 +88,7 @@ export const activateEmployee = createAsyncThunk(
      
     async (payload, { rejectWithValue }) => {
         try {
-            const token = window.location.pathname.toString().replace('/employee/active-account/',"")
+            const token = window.location.pathname.toString().replace("/employee/activate-account/","")
             
             localStorage.setItem("token", token)
 
